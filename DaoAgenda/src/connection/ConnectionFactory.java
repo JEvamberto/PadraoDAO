@@ -5,18 +5,79 @@
  */
 package connection;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jose
  */
 public class ConnectionFactory {
-    
-   private static String DRIVER="";
-   private static String URL="";
-   private static String USER="";
-   private static String PASSWORD="";
-   
-   
-    
-    
+
+    private static String DRIVER = "com.mysql.jdbc.Driver";
+    private static String URL = "jdbc:mysql://localhost:3306/db_Agenda";
+    private static String USER = "root";
+    private static String PASSWORD = "";
+
+    public static Connection getConnection() {
+
+        try {
+            Class.forName(DRIVER);
+
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new RuntimeException("Erro ao estabelecer a comunicação com o banco de dados", ex);
+        }
+
+    }
+
+    public static void closeConnection(Connection conexao) {
+        if (conexao != null) {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                System.err.println("Erro ao fechar conexão:" + ex);
+            }
+
+        }
+
+    }
+
+    public static void closeConnection(Connection conexao, PreparedStatement stmt) {
+
+        if (conexao != null) {
+
+            try {
+                conexao.close();
+                stmt.close();
+            } catch (SQLException ex) {
+                System.err.println("Erro ao fechar conexão:" + ex);
+
+            }
+
+        }
+
+    }
+
+    public static void closeConnection(Connection conexao, PreparedStatement stmt, ResultSet rs) {
+
+        if (conexao != null) {
+            try {
+                conexao.close();
+                stmt.close();
+                rs.close();
+            } catch (SQLException ex) {
+                System.err.println("Erro ao fechar conexão:" + ex);
+            }
+
+        }
+
+    }
+
 }
