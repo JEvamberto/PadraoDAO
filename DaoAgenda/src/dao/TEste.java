@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package dao;
 
 /**
  *
  * @author jose
  */
-class Telefone {
-    
+public class TEste {
+    public static void main(String[] args) {
+       
+        
+            
+            
+            
+    }
 }

@@ -10,9 +10,52 @@ package model;
  * @author jose
  */
 public class Agenda {
+    private int id;
+    private String email;
+    private String nome;
+    private String telefone;
     
-    private Email email;
-    private Nome nome;
-    private Telefone telefone;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return  "id:" + id + ", Nome:" + nome + ", E-mail:" + email + ", telefone:" + telefone ;
+    }
     
+    
+    
+
+    
+
 }
